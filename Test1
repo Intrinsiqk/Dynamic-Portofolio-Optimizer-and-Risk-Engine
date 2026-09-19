@@ -1,0 +1,41 @@
+//Test Output for the engine using !python portfolio_engine.py --tickers SPY TLT GLD EFA EEM --start 2015-01-01
+5 assets, 2944 days: 2015-01-05 -> 2026-09-18
+
+=== Walk-forward backtest (net of 5 bps costs) ===
+                           CAGR  Volatility  Sharpe  Sortino  Max drawdown  Calmar  VaR 95% (1d)  CVaR 95% (1d)  Avg turnover/rebal
+Equal weight (no overlay) 0.099       0.118   0.857    1.206        -0.251   0.394         0.011          0.017               0.032
+Equal weight + overlay    0.070       0.081   0.882    1.229        -0.164   0.431         0.008          0.012               0.123
+Min variance              0.068       0.077   0.893    1.243        -0.186   0.367         0.008          0.012               0.134
+Max Sharpe                0.086       0.079   1.084    1.498        -0.156   0.553         0.008          0.012               0.157
+Risk parity               0.062       0.077   0.811    1.121        -0.183   0.337         0.008          0.012               0.128
+Min CVaR                  0.071       0.079   0.910    1.271        -0.187   0.378         0.008          0.012               0.151
+Risk parity (no overlay)  0.089       0.105   0.864    1.228        -0.259   0.343         0.010          0.015               0.036 
+
+=== Risk report: latest 'Risk parity' allocation (cash = 9.4%) ===
+Hist VaR 95% (1d)              0.010
+Hist CVaR 95% (1d)             0.015
+Normal VaR 95% (1d)            0.010
+Cornish-Fisher VaR 95% (1d)    0.009
+Monte-Carlo t VaR 95% (1d)     0.010
+Monte-Carlo t CVaR 95% (1d)    0.014
+Ann. volatility                0.104
+Max drawdown                  -0.081
+Diversification ratio          1.449
+dtype: float64 
+
+     weight  marginal_risk  component_risk  pct_of_risk
+EEM   0.118          0.180           0.021        0.204
+EFA   0.149          0.141           0.021        0.202
+GLD   0.144          0.146           0.021        0.202
+SPY   0.174          0.120           0.021        0.201
+TLT   0.321          0.062           0.020        0.191 
+
+=== Stress tests (P&L as % of NAV) ===
+Equity crash (-30%)     -0.116
+Rates shock (+200bp)    -0.100
+Stagflation             -0.080
+Correlation-1 selloff   -0.136
+Name: pnl, dtype: float64 
+
+=== 95% VaR backtest (rolling 250d historical VaR) ===
+{'observations': 2190, 'exceptions': 131, 'expected': 109.5, 'exception_rate': 0.059817351598173515, 'kupiec_pvalue': 0.04060513633827256} 
